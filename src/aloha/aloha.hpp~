@@ -1,0 +1,12 @@
+#include <string>
+
+namespace aloha
+{
+class aloha
+{
+public:
+
+private:
+    std::string file_path;
+}
+}
