@@ -1,0 +1,1 @@
+clang++ test_log_auto_file.cpp -o test_log_auto_file

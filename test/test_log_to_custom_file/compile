@@ -1,0 +1,1 @@
+clang++ test_log_to_custom_file.cpp -o test_log_to_custom_file

@@ -1,0 +1,1 @@
+clang++ test_log_to_iostream.cpp -o test_log_to_iostream
