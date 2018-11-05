@@ -51,7 +51,7 @@ public:
         }
     }
 
-    aloha(std::string file_path) : m_to_file(true), m_file_path(file_path)
+    aloha(std::string file_path) : m_file_path(file_path), m_to_file(true)
     {
         outfile.open(file_path, std::ios_base::app);
     }
@@ -82,40 +82,40 @@ public:
         present_msg("data", msg);
     }
 
-    void warning(std::string msg)
+    void warning(std::string msg, bool error=false)
     {
-        present_msg("warning", msg);
+        present_msg("warning", msg, error);
     }
 
-    void error(std::string msg)
+    void error(std::string msg, bool error=true)
     {
-        present_msg("error", msg);
+        present_msg("error", msg, error);
     }
 
-    void fault(std::string msg)
+    void fault(std::string msg, bool error=false)
     {
-        present_msg("fault", msg);
+        present_msg("fault", msg, error);
     }
 
-    void failur(std::string msg)
+    void failur(std::string msg, bool error=false)
     {
-        present_msg("failur", msg);
+        present_msg("failur", msg, error);
     }
 
-    void custom(std::string type, std::string msg)
+    void custom(std::string type, std::string msg, bool error=false)
     {
-        present_msg(type, msg);
+        present_msg(type, msg, error);
     }
 
 
 private:
 
-    void present_msg(std::string type, std::string msg)
+    void present_msg(std::string type, std::string msg, bool error=false)
     {
-        write("[" + type + "] " + msg);
+        write("[" + type + "] " + msg, error);
     }
 
-    void write(std::string msg)
+    void write(std::string msg, bool error=false)
     {
         if (m_timestamp)
         {
@@ -128,7 +128,15 @@ private:
         }
         else
         {
-            std::cout << msg << std::endl;
+            if (error)
+            {
+                std::cerr << msg << std::endl;
+            }
+            else
+            {
+                std::cout << msg << std::endl;
+            }
+
         }
 
     }

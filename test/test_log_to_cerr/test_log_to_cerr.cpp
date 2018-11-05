@@ -6,7 +6,7 @@ int main(void)
 {
     auto log = aloha::aloha();
 
-    std::cout << "Testing without timestamps" << std::endl << std::endl;
+    std::cout << "Without std::cerr" << std::endl << std::endl;
 
     log.success("Testing success");
     log.info("Testing info");
@@ -17,21 +17,19 @@ int main(void)
     log.fault("Testing fault");
     log.failur("Testing failur");
 
-    log.custom("custome", "Testing custom");
+    log.custom("custom", "Testing custom");
 
-    std::cout << std::endl << std::endl << "Testing withtimestamps" << std::endl << std::endl;
+    std::cout << "With std::cerr" << std::endl << std::endl;
 
-    log.timestamp_on();
     log.success("Testing success");
     log.info("Testing info");
     log.data("Testing data");
+    log.warning("Testing warning", true);
+    log.error("Testing error", true);
+    log.fault("Testing fault", true);
+    log.failur("Testing failur", true);
 
-    log.warning("Testing warning");
-    log.error("Testing error");
-    log.fault("Testing fault");
-    log.failur("Testing failur");
-
-    log.custom("custom", "Testing");
+    log.custom("custom", "Testing", true);
 
     return 0;
 }

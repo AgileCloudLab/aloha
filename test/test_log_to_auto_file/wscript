@@ -1,0 +1,5 @@
+def build(bld):
+    bld(features = 'cxx cxxprogram',
+        target = 'test_log_auto_file',
+        source = 'test_log_auto_file.cpp',
+        use = ['aloha_includes'])

@@ -1,4 +1,4 @@
-#include "../../src/aloha/aloha.hpp"
+#include <aloha/aloha.hpp>
 
 #include <iostream>
 #include <string>
