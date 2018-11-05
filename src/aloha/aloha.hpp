@@ -42,7 +42,7 @@ namespace aloha
 class aloha
 {
 public:
-    aloha(bool to_file=false) : m_to_file(to_file)
+    aloha(bool to_file=false) : m_to_file(to_file), m_timestamp(false)
     {
         if (to_file)
         {
@@ -51,7 +51,7 @@ public:
         }
     }
 
-    aloha(std::string file_path) : m_file_path(file_path), m_to_file(true)
+    aloha(std::string file_path) : m_file_path(file_path), m_to_file(true), m_timestamp(false)
     {
         outfile.open(file_path, std::ios_base::app);
     }
