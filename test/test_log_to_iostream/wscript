@@ -1,0 +1,5 @@
+def build(bld):
+    bld(features = 'cxx cxxprogram',
+        target = 'test_log_to_iostream',
+        source = 'test_log_to_iostream.cpp',
+        use = ['aloha_includes'])
