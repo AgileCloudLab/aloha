@@ -15,7 +15,7 @@ int main(void)
     log.warning("Testing warning");
     log.error("Testing error");
     log.fault("Testing fault");
-    log.failure("Testing failur");
+    log.failure("Testing failure");
 
     log.custom("custome", "Testing custom");
 
@@ -29,9 +29,33 @@ int main(void)
     log.warning("Testing warning");
     log.error("Testing error");
     log.fault("Testing fault");
-    log.failure("Testing failur");
+    log.failure("Testing failure");
 
     log.custom("custom", "Testing");
+
+    std::cout << "" << std::endl;
+    std::cout << "Turning logging off" << std::endl;
+    log.logging_off();
+    log.success("Testing success");
+    log.info("Testing info");
+    log.data("Testing data");
+
+    log.warning("Testing warning");
+    log.error("Testing error");
+    log.fault("Testing fault");
+    log.failure("Testing failure");
+
+    log.custom("custom", "Testing");
+    std::cout << "Turning logging back on off" << std::endl;
+    log.logging_on();
+    log.success("Testing success");
+    log.info("Testing info");
+    log.data("Testing data");
+
+    log.warning("Testing warning");
+    log.error("Testing error");
+    log.fault("Testing fault");
+    log.failure("Testing failure");
 
     return 0;
 }

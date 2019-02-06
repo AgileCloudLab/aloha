@@ -31,3 +31,4 @@ def build(bld):
     bld.recurse('test/test_log_to_custom_file')
     bld.recurse('test/test_log_to_iostream')
     bld.recurse('test/test_log_to_cerr')
+    bld.recurse('test/test_logging_on_off')    

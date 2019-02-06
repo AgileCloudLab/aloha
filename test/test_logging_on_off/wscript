@@ -1,0 +1,5 @@
+def build(bld):
+    bld(features = 'cxx cxxprogram',
+        target = 'test_logging_on_off',
+        source = 'test_logging_on_off.cpp',
+        use = ['aloha_includes'])

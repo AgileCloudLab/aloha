@@ -42,7 +42,7 @@ namespace aloha
 class aloha
 {
 public:
-    aloha(bool to_file=false) : m_to_file(to_file), m_timestamp(false)
+    aloha(bool to_file=false) : m_to_file(to_file), m_timestamp(false), m_logging(true)
     {
         if (to_file)
         {
@@ -51,7 +51,7 @@ public:
         }
     }
 
-    aloha(std::string file_path) : m_file_path(file_path), m_to_file(true), m_timestamp(false)
+    aloha(std::string file_path) : m_file_path(file_path), m_to_file(true), m_timestamp(false), m_logging(true)
     {
         outfile.open(file_path, std::ios_base::app);
     }
@@ -97,7 +97,7 @@ public:
         present_msg("fault", msg, error);
     }
 
-    void failur(std::string msg, bool error=false)
+    void failure(std::string msg, bool error=false)
     {
         present_msg("failur", msg, error);
     }
@@ -107,12 +107,30 @@ public:
         present_msg(type, msg, error);
     }
 
+    void logging_on()
+    {
+        m_logging = true;
+    }
+
+    void logging_off()
+    {
+        m_logging = false;
+    }
+
+    bool logging()
+    {
+        return m_logging;
+    }
+
 
 private:
 
     void present_msg(std::string type, std::string msg, bool error=false)
     {
-        write("[" + type + "] " + msg, error);
+        if (m_logging)
+        {
+            write("[" + type + "] " + msg, error);
+        }
     }
 
     void write(std::string msg, bool error=false)
@@ -163,6 +181,8 @@ private:
 
     bool m_to_file;
     bool m_timestamp;
+
+    bool m_logging;
 
     std::ofstream outfile;
 };
