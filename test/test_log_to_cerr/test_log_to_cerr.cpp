@@ -15,7 +15,7 @@ int main(void)
     log.warning("Testing warning");
     log.error("Testing error");
     log.fault("Testing fault");
-    log.failur("Testing failur");
+    log.failure("Testing failur");
 
     log.custom("custom", "Testing custom");
 
@@ -27,7 +27,7 @@ int main(void)
     log.warning("Testing warning", true);
     log.error("Testing error", true);
     log.fault("Testing fault", true);
-    log.failur("Testing failur", true);
+    log.failure("Testing failur", true);
 
     log.custom("custom", "Testing", true);
 
