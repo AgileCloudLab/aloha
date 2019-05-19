@@ -42,7 +42,7 @@ namespace aloha
 class aloha
 {
 public:
-    aloha(bool to_file=false) : m_to_file(to_file), m_timestamp(false)
+    aloha(bool to_file=false) : m_to_file(to_file), m_timestamp(false), m_log(true)
     {
         if (to_file)
         {
@@ -51,11 +51,20 @@ public:
         }
     }
 
-    aloha(std::string file_path) : m_file_path(file_path), m_to_file(true), m_timestamp(false)
+    aloha(std::string file_path) : m_file_path(file_path), m_to_file(true), m_timestamp(false), m_log(true)
     {
         outfile.open(file_path, std::ios_base::app);
     }
 
+    void disable()
+    {
+        m_log = false;
+    }
+
+    void enable()
+    {
+        m_log = true;
+    }
 
     void timestamp_on()
     {
@@ -69,44 +78,43 @@ public:
 
     void success(std::string msg)
     {
-        present_msg("success", msg);
+        m_log ? present_msg("success", msg) : void();
     }
 
     void info(std::string msg)
     {
-        present_msg("info", msg);
+        m_log ? present_msg("info", msg) : void();
     }
 
     void data(std::string msg)
     {
-        present_msg("data", msg);
+        m_log ? present_msg("data", msg) : void();
     }
 
     void warning(std::string msg, bool error=false)
     {
-        present_msg("warning", msg, error);
+        m_log ? present_msg("warning", msg, error) : void();
     }
 
     void error(std::string msg, bool error=true)
     {
-        present_msg("error", msg, error);
+        m_log ? present_msg("error", msg, error) : void();
     }
 
     void fault(std::string msg, bool error=false)
     {
-        present_msg("fault", msg, error);
+        m_log ? present_msg("fault", msg, error) : void();
     }
 
-    void failur(std::string msg, bool error=false)
+    void failure(std::string msg, bool error=false)
     {
-        present_msg("failur", msg, error);
+        m_log ? present_msg("failure", msg, error) : void();
     }
 
     void custom(std::string type, std::string msg, bool error=false)
     {
-        present_msg(type, msg, error);
+        m_log ? present_msg(type, msg, error) : void();
     }
-
 
 private:
 
@@ -163,6 +171,8 @@ private:
 
     bool m_to_file;
     bool m_timestamp;
+
+    bool m_log;
 
     std::ofstream outfile;
 };
