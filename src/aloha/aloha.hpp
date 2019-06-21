@@ -66,6 +66,11 @@ public:
         m_log = true;
     }
 
+    bool enabled()
+    {
+    	return m_log;
+    }
+
     void timestamp_on()
     {
         m_timestamp = true;
