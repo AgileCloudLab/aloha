@@ -47,13 +47,22 @@ public:
         if (to_file)
         {
             m_file_path = "./aloha.log";
-            outfile.open(m_file_path, std::ios_base::app);
+            m_outfile.open(m_file_path, std::ios_base::app);
         }
     }
 
     aloha(std::string file_path) : m_file_path(file_path), m_to_file(true), m_timestamp(false), m_log(true)
     {
-        outfile.open(file_path, std::ios_base::app);
+        m_outfile.open(file_path, std::ios_base::app);
+    }
+
+    ~aloha()
+    {
+	if(m_to_file && m_outfile.is_open())
+	{
+	    m_outfile.flush();
+	    m_outfile.close();
+	}
     }
 
     void disable()
@@ -156,7 +165,7 @@ private:
 
     void write_to_file(std::string msg)
     {
-        outfile << msg << std::endl;
+        m_outfile << msg << std::endl;
     }
 
     std::string time_stamp()
@@ -179,6 +188,6 @@ private:
 
     bool m_log;
 
-    std::ofstream outfile;
+    std::ofstream m_outfile;
 };
 }
