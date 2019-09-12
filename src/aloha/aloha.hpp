@@ -65,6 +65,18 @@ public:
 	}
     }
 
+    aloha(const aloha& theOther)
+    {
+	m_file_path = theOther.m_file_path;
+	m_to_file = theOther.m_to_file;
+	m_timestamp =  theOther.m_timestamp;
+	m_log = theOther.m_log;
+	if(m_to_file)
+	{
+	    m_outfile.open(m_file_path, std::ios_base::app);
+	}
+    }
+    
     aloha& operator=(const aloha& theOther)
     {
 	if(this != &theOther)
@@ -75,6 +87,11 @@ public:
 	    m_log = theOther.m_log;
 	    if(m_to_file)
 	    {
+		if(m_outfile.is_open())
+		{
+		    m_outfile.flush();
+		    m_outfile.close();
+		}
 		m_outfile.open(m_file_path, std::ios_base::app);
 	    }
 	}

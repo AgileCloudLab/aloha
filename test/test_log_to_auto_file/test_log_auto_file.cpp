@@ -6,6 +6,7 @@ int main(void)
 {
     aloha::aloha log;
     log = aloha::aloha(true);
+    aloha::aloha log2 = log;
 
     std::cout << "Testing without timestamps" << std::endl << std::endl;
 
