@@ -4,7 +4,8 @@
 
 int main(void)
 {
-    auto log = aloha::aloha();
+    aloha::aloha log;
+    log = aloha::aloha();
 
     std::cout << "Without std::cerr" << std::endl << std::endl;
 

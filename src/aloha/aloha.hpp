@@ -65,6 +65,23 @@ public:
 	}
     }
 
+    aloha& operator=(const aloha& theOther)
+    {
+	if(this != &theOther)
+	{
+	    m_file_path = theOther.m_file_path;
+	    m_to_file = theOther.m_to_file;
+	    m_timestamp =  theOther.m_timestamp;
+	    m_log = theOther.m_log;
+	    if(m_to_file)
+	    {
+		m_outfile.open(m_file_path, std::ios_base::app);
+	    }
+	}
+
+	return *this;	
+    }
+    
     void disable()
     {
         m_log = false;

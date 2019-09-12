@@ -4,7 +4,8 @@
 
 int main(void)
 {
-    auto log = aloha::aloha(true);
+    aloha::aloha log;
+    log = aloha::aloha(true);
 
     std::cout << "Testing without timestamps" << std::endl << std::endl;
 
@@ -15,7 +16,7 @@ int main(void)
     log.warning("Testing warning");
     log.error("Testing error");
     log.fault("Testing fault");
-    log.failure("Testing failur");
+    log.failure("Testing failure");
 
     log.custom("custome", "Testing custom");
 
@@ -29,7 +30,7 @@ int main(void)
     log.warning("Testing warning");
     log.error("Testing error");
     log.fault("Testing fault");
-    log.failure("Testing failur");
+    log.failure("Testing failure");
 
     log.custom("custom", "Testing");
 
