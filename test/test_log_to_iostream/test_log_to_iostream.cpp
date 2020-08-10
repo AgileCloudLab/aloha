@@ -33,5 +33,18 @@ int main(void)
 
     log.custom("custom", "Testing");
 
+    log.test("Test 1");
+    log.enable_test();
+    log.test("Test 2");
+    log.disable_test();
+    log.test("Test 3");
+
+    log.debug("Debug 1");
+    log.enable_debug();
+    log.debug("Debug 2");
+    log.disable_debug();
+    log.debug("Debug 3");
+    
+    
     return 0;
 }

@@ -42,7 +42,7 @@ namespace aloha
 class aloha
 {
 public:
-    aloha(bool to_file=false) : m_to_file(to_file), m_timestamp(false), m_log(true)
+    aloha(bool to_file=false) : m_to_file(to_file), m_timestamp(false), m_log(true), m_test(false), m_debug(false)
     {
         if (to_file)
         {
@@ -109,6 +109,26 @@ public:
         m_log = true;
     }
 
+    void disable_test()
+    {
+        m_test = false;
+    }
+    
+    void enable_test()
+    {
+        m_test = true;
+    }
+
+    void disable_debug()
+    {
+        m_debug = false;
+    }
+
+    void enable_debug()
+    {
+        m_debug = true; 
+    }
+
     bool enabled()
     {
     	return m_log;
@@ -157,6 +177,22 @@ public:
     void failure(std::string msg, bool error=false)
     {
         m_log ? present_msg("failure", msg, error) : void();
+    }
+
+    void test(std::string msg)
+    {
+        if (m_test)
+        {
+            m_log? present_msg("test", msg) : void();
+        }
+    }
+
+    void debug(std::string msg)
+    {
+        if (m_debug)
+        {
+            m_log? present_msg("debug", msg) : void();
+        }
     }
 
     void custom(std::string type, std::string msg, bool error=false)
@@ -221,6 +257,8 @@ private:
     bool m_timestamp;
 
     bool m_log;
+    bool m_test;
+    bool m_debug; 
 
     std::ofstream m_outfile;
 };
