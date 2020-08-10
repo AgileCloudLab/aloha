@@ -1,0 +1,5 @@
+# 2.2.3
+
+- Added support for `test` and `debug` messages
+- `test` and `debug`can be enabled and disabled at run-time 
+	
